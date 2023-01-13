@@ -15,20 +15,20 @@ sales_summary <- sales_data %>%
 # 4. Print the summary data
 print(sales_summary)
 
-# Use dplyr to look at average customer age by gender
+# 5. Use dplyr to look at average customer age by gender
 avg_age_by_gender <- sales_data %>% 
   group_by(Customer_Gender) %>% 
   summarize(mean_age = mean(Customer_Age))
 
-# Print the result
+# 6. Print the result
 print(avg_age_by_gender)
 
-# Use dplyr to find the top 5 states with the most revenue
+# 7. Use dplyr to find the top 5 states with the most revenue
 top_states_by_revenue <- sales_data %>% 
   group_by(State) %>% 
   summarize(total_revenue = sum(Revenue)) %>% 
   arrange(desc(total_revenue)) %>% 
   head(5)
 
-# Print the result
+# 8. Print the result
 print(top_states_by_revenue)
