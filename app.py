@@ -1,16 +1,16 @@
-# Import necessary libraries
+# 1. Import necessary libraries
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
-import pandas as pd
+import pandas as pd 
 import streamlit as st
 
-# Load the data
+# 2. Load the data
 def load_data():
     data = pd.read_csv("sales_data.csv")
     return data
 
-# Build the model
+# 3. Build the Model
 def build_model(data):
     # Split the data into features and target
     X = data[["Order_Quantity", "Unit_Cost", "Unit_Price"]]
@@ -24,7 +24,7 @@ def build_model(data):
     clf.fit(X_train, y_train)
     return clf, X_train, X_test, y_train, y_test
 
-# Evaluate the model
+# 4. Evaluate the model
 def evaluate_model(clf, X_test, y_test):
     # Make predictions
     y_pred = clf.predict(X_test)
@@ -32,6 +32,7 @@ def evaluate_model(clf, X_test, y_test):
     accuracy = accuracy_score(y_test, y_pred)
     return accuracy
 
+# 5. Streamlit app
 def run():
     # Load the data
     data = load_data()
@@ -55,3 +56,6 @@ def run():
         # Download the predictions
         st.write("Download predictions")
         st.dataframe(test_data)
+
+if __name__ == '__main__':
+    run()
